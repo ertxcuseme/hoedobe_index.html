@@ -405,7 +405,7 @@ body.tool-edittext .pg{touch-action:none;cursor:text}
 </div>
 <script>
 const $=s=>document.querySelector(s);
-const APP_V=20;   // bump with every export; shown next to the title and used in the delivered folder name
+const APP_V=21;   // bump with every export; shown next to the title and used in the delivered folder name
 $('#ver').textContent='V'+String(APP_V).padStart(2,'0');
 const V=$('#view'),T=$('#thumbs');
 let docs=[],pages=[],tool='select',scale=1.3,sel=null,hist=[],fname='edited.pdf',drag=null,from=null;
@@ -2259,7 +2259,7 @@ function scResolve(scenes,cueChars){
       if(!have.has(id)&&!rm.has(id)&&!SC.chars.some(c=>c.cue&&first(c.cue)==toks[0])){const n={id,name:scTitle(id),color:scColor(SC.nc++),pend:true,on:true,hasLines:false};SC.chars.push(n);have.set(id,n)}
     }
   }
-  // full names that only ever appear in the action ("Silas Hammond"): the cue is just "SILAS"
+  // full names that only ever appear in the action ("Jane Smith"): the cue is just "JANE"
   {const NOT=new Set('The And But Then Now Not Just Who Who\u2019s What When Where While With Without Into Onto Over Under From Back Out Off Up Down Her His Their They She He It Its For Has Had Was Were Are Is Be Been Can Will Would Could Should This That These Those One Two Three All Any Some Each Every Sees Looks Turns Walks Stops Says Says Gets Goes Comes'.split(' ').map(w=>w));
    const firsts=new Set(SC.chars.map(c=>(c.cue||c.name).split(/\s+/)[0].toLowerCase()));
    for(const c of SC.chars){
@@ -2862,7 +2862,7 @@ function scMatchDood(){
     const o=SC.chars.find(x=>x!==c&&x.num==c.num&&(x.full||'').toUpperCase().split(/\s+/).slice(-1)[0]===c.id&&!c.hasLines);
     if(o){o.al=[...new Set([...(o.al||[]),c.id])];SC.chars=SC.chars.filter(x=>x!==c);if(!SC.rm.includes(c.id))SC.rm.push(c.id)}
   }
-  // someone known only by surname elsewhere in the script ("DAUBNER") who is really a matched character
+  // someone known only by surname elsewhere in the script ("SMITH") who is really a matched character
   for(const c of SC.chars.slice()){
     if(c.num||c.hasLines)continue;
     const hit=rows.find(r=>r.core.split(' ').slice(-1)[0]===c.id);
